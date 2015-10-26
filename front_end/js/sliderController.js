@@ -15,9 +15,19 @@ function SliderController() {
     self.dateInWords = self.nytSlider.value + ' Sep'
 
     self.callDate = function() {
-      console.log('2015' + self.nytSlider.value + '09')
+      //if value is less than ten add a zero before
 
-      //if value is less than ten need to call a number
+      var day = self.nytSlider.value
+      console.log(day)
+
+      if (day < 10) {
+        day = '0' + day
+      }
+
+      console.log('2015' + day + '09')
+
+      
+      //refactor this
       self.dateInWords = self.nytSlider.value + ' Sep'
     }
 
