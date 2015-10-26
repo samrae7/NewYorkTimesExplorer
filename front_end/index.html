@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+  <script src="./node_modules/angularjs-slider/dist/rzslider.js"></script>
+  <script src="js/sliderController.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="./node_modules/angularjs-slider/dist/rzslider.css">
+</head>
+<body>
+
+<h1>NYT Explorer</h1>
+
+<div ng-app="myapp">
+    <div ng-controller="SliderController as vm">
+        <p>Date: {{vm.dateInWords}}</p>
+        <rzslider rz-slider-model="vm.nytSlider.value" rz-slider-floor="vm.nytSlider.floor" rz-slider-ceil="vm.nytSlider.ceil" rz-slider-on-end="vm.callDate()" rz-slider-translate="vm.translate"></rzslider>
+    </div>
+</div>
+
+</body>
+</html>
