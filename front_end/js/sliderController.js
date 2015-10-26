@@ -1,13 +1,16 @@
-var myApp = angular.module('myapp', ['rzModule']);
-
-myApp.controller("SliderController", SliderController);
-
-function SliderController() {
+var nytApp = angular.module('nytApp', ['rzModule'])
+  .controller("SliderController", function(SliderFactory) {
 
     var self = this;
 
+    SliderFactory.getArticles()
+    .then(function(response) {
+      self.articles = response;
+      console.log(response)
+    });
+
     self.nytSlider = {
-        floor: 0,
+        floor: 1,
         ceil: 31,
         value: 15
     }
@@ -24,9 +27,15 @@ function SliderController() {
         day = '0' + day
       }
 
-      console.log('2015' + day + '09')
+      var date = '201509' + day
+      console.log(date)
 
-      
+      SliderFactory.getArticlesByDate(date)
+        .then(function(response) {
+        self.articles = response;
+        console.log(response)
+      });
+
       //refactor this
       self.dateInWords = self.nytSlider.value + ' Sep'
     }
@@ -34,7 +43,11 @@ function SliderController() {
     self.translate = function(value) {
       return value + ' Sep'
     }
-}
+
+  })
+
+
+    
 
 
 

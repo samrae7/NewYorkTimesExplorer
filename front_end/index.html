@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="nytApp">
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
@@ -7,12 +7,13 @@
   <script src="./node_modules/angularjs-slider/dist/rzslider.js"></script>
   <script src="js/sliderController.js" charset="utf-8"></script>
   <link rel="stylesheet" href="./node_modules/angularjs-slider/dist/rzslider.css">
+  <script type="text/javascript" src="js/sliderFactory.js"></script>
 </head>
 <body>
 
 <h1>NYT Explorer</h1>
 
-<div ng-app="myapp">
+<div>
     <div ng-controller="SliderController as vm">
         <p>Date: {{vm.dateInWords}}</p>
         <rzslider rz-slider-model="vm.nytSlider.value" rz-slider-floor="vm.nytSlider.floor" rz-slider-ceil="vm.nytSlider.ceil" rz-slider-on-end="vm.callDate()" rz-slider-translate="vm.translate"></rzslider>

@@ -6,6 +6,8 @@ var request = require('request')
 var router = express.Router(); 
 var cors = require('cors');
 
+app.use(cors())
+
 var mainController = require('./controllers/mainController')
 
 
@@ -14,13 +16,15 @@ var mainController = require('./controllers/mainController')
 
 // CONFIG //
 
+
+
 app.use('/', router);
 
 // body parser config
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-app.use(cors())
+
 
 request('http://jservice.io/api/random?count=1', function (error, response, body) {
   if (!error && response.statusCode == 200) {
