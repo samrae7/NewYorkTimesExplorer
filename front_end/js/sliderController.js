@@ -9,6 +9,8 @@ var nytApp = angular.module('nytApp', ['rzModule'])
       console.log(response)
     });
 
+    self.article = {}
+
     self.nytSlider = {
         floor: 1,
         ceil: 31,
@@ -32,8 +34,8 @@ var nytApp = angular.module('nytApp', ['rzModule'])
 
       SliderFactory.getArticlesByDate(date)
         .then(function(response) {
-        self.articles = response;
-        console.log(response)
+        self.article = response.nyt.response.docs[0]
+        console.log(self.article)
       });
 
       //refactor this

@@ -2,7 +2,7 @@
 <html lang="en" ng-app="nytApp">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>NYT Explorer</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
   <script src="./node_modules/angularjs-slider/dist/rzslider.js"></script>
   <script src="js/sliderController.js" charset="utf-8"></script>
@@ -11,10 +11,19 @@
 </head>
 <body>
 
-<h1>NYT Explorer</h1>
+  <h1>NYT Explorer</h1>
 
-<div>
-    <div ng-controller="SliderController as vm">
+  <div ng-controller="SliderController as vm">
+
+    <div class="articles-container">
+      <article>
+        <h3></h3>
+        <p class="date">Date: {{vm.article.pub_date | date:'d MMM'}}</p>
+        <p class="snippet"></p>
+      </article>
+    </div>
+
+    <div>
         <p>Date: {{vm.dateInWords}}</p>
         <rzslider rz-slider-model="vm.nytSlider.value" rz-slider-floor="vm.nytSlider.floor" rz-slider-ceil="vm.nytSlider.ceil" rz-slider-on-end="vm.callDate()" rz-slider-translate="vm.translate"></rzslider>
     </div>
