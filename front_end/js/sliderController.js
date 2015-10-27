@@ -3,13 +3,9 @@ var nytApp = angular.module('nytApp', ['rzModule'])
 
     var self = this;
 
-    SliderFactory.getArticles()
-    .then(function(response) {
-      self.articles = response;
-      console.log(response)
-    });
+    //self.article = {}
 
-    self.article = {}
+    self.searchText = "presidential election"
 
     self.nytSlider = {
         floor: 1,
@@ -25,30 +21,38 @@ var nytApp = angular.module('nytApp', ['rzModule'])
       console.log('articles removed and invisible. waiting for new articles to load')
     }
 
-    self.callDate = function() {
+    self.workOutDate = function() {
       //if value is less than ten add a zero before
 
       var day = self.nytSlider.value
-      console.log(day)
 
       if (day < 10) {
         day = '0' + day
       }
 
       var date = '201509' + day
-      console.log(date)
+      
 
-      SliderFactory.getArticlesByDate(date)
+      //refactor this
+      self.dateInWords = self.nytSlider.value + ' Sep'
+
+      return date
+    }
+
+     
+    self.getArticles = function() {
+
+      date = self.workOutDate()
+
+       SliderFactory.getArticles(date, self.searchText)
         .then(function(response) {
         self.articles = response.nyt.response.docs
         console.log(self.articles)
       });
 
-      //refactor this
-      self.dateInWords = self.nytSlider.value + ' Sep'
     }
 
-    self.callDate()
+    self.getArticles()
 
     self.translate = function(value) {
       return value + ' Sep'
