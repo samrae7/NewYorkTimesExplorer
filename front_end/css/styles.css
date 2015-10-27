@@ -1,0 +1,12 @@
+img {
+  width: 190px;
+  height: 126px;
+  border: dotted gray 1px;
+}
+
+article.article-holder{
+  width: 210px;
+  height:370px;
+  border: dotted gray 1px;
+  float:left;
+}

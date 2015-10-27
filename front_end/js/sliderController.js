@@ -17,6 +17,8 @@ var nytApp = angular.module('nytApp', ['rzModule'])
         value: 15
     }
 
+    //self.articles = []
+
     self.dateInWords = self.nytSlider.value + ' Sep'
 
     self.callDate = function() {
@@ -34,13 +36,15 @@ var nytApp = angular.module('nytApp', ['rzModule'])
 
       SliderFactory.getArticlesByDate(date)
         .then(function(response) {
-        self.article = response.nyt.response.docs[0]
-        console.log(self.article)
+        self.articles = response.nyt.response.docs
+        console.log(self.articles)
       });
 
       //refactor this
       self.dateInWords = self.nytSlider.value + ' Sep'
     }
+
+    self.callDate()
 
     self.translate = function(value) {
       return value + ' Sep'

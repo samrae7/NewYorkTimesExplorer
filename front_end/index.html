@@ -8,6 +8,7 @@
   <script src="js/sliderController.js" charset="utf-8"></script>
   <link rel="stylesheet" href="./node_modules/angularjs-slider/dist/rzslider.css">
   <script type="text/javascript" src="js/sliderFactory.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -15,18 +16,24 @@
 
   <div ng-controller="SliderController as vm">
 
-    <div class="articles-container">
-      <article>
-        <h3></h3>
-        <p class="date">Date: {{vm.article.pub_date | date:'d MMM'}}</p>
-        <p class="snippet"></p>
-      </article>
-    </div>
-
     <div>
         <p>Date: {{vm.dateInWords}}</p>
         <rzslider rz-slider-model="vm.nytSlider.value" rz-slider-floor="vm.nytSlider.floor" rz-slider-ceil="vm.nytSlider.ceil" rz-slider-on-end="vm.callDate()" rz-slider-translate="vm.translate"></rzslider>
     </div>
+
+    <div class="articles-container">
+      <article class="article-holder" ng-repeat="article in vm.articles">
+
+        <h3>
+          <a ng-href="{{article.web_url}}">{{article.headline.main}}</a>
+        </h3>
+
+       <!--  <p class="date">Date: {{article.pub_date | date:'d MMM'}}</p> -->
+       <img ng-src="http://www.nytimes.com/{{article.multimedia[0].url}}" alt="Description" src="http://www.goseekadventures.com/wp-content/uploads/2014/06/New-York-Times-Social-Logo.jpg">
+        <p class="snippet">{{article.snippet}}</p>
+      </article>
+    </div>
+
 </div>
 
 </body>
