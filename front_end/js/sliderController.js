@@ -1,4 +1,4 @@
-var nytApp = angular.module('nytApp', ['rzModule'])
+angular.module('nytApp')
   .controller("SliderController", function(SliderFactory) {
 
     var self = this;

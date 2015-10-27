@@ -1,47 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="nytApp">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <base href="/"></base>
   <title>NYT Explorer</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+  <script src="js/app.js"></script>
   <script src="./node_modules/angularjs-slider/dist/rzslider.js"></script>
   <script src="js/sliderController.js" charset="utf-8"></script>
-  <link rel="stylesheet" href="./node_modules/angularjs-slider/dist/rzslider.css">
   <script type="text/javascript" src="js/sliderFactory.js"></script>
+  <link rel="stylesheet" href="./node_modules/angularjs-slider/dist/rzslider.css">
   <link rel="stylesheet" href="css/styles.css">
   <link href='https://fonts.googleapis.com/css?family=Julius+Sans+One' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Crimson+Text' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body ng-app="nytApp">
 
   <h1>NYT Explorer</h1>
 
-  <div ng-controller="SliderController as vm">
+  <a ui-sref="map">Map</a>
 
-     <form>
-        <label for="searchBox" class="active">Search: </label>
-        <input type="text" id='searchBox' ng-model="vm.searchText" placeholder="e.g. presidential election" ng-change="vm.getArticles()">
-      </form>
-
-    <div>
-        <p>Date: {{vm.dateInWords}}</p>
-        <rzslider rz-slider-model="vm.nytSlider.value" rz-slider-floor="vm.nytSlider.floor" rz-slider-ceil="vm.nytSlider.ceil" rz-slider-on-end="vm.getArticles()" rz-slider-on-start="vm.hideArticles()" rz-slider-translate="vm.translate"></rzslider>
-    </div>
-
-    <div class="articles-container">
-      <article class="article-holder" ng-repeat="article in vm.articles">
-
-        <h3>
-          <a ng-href="{{article.web_url}}">{{article.headline.main}}</a>
-        </h3>
-
-       <!--  <p class="date">Date: {{article.pub_date | date:'d MMM'}}</p> -->
-       <img ng-src="http://www.nytimes.com/{{article.multimedia[0].url}}" alt="Description" src="http://www.goseekadventures.com/wp-content/uploads/2014/06/New-York-Times-Social-Logo.jpg">
-        <p class="snippet">{{article.snippet}}</p>
-      </article>
-    </div>
-
-</div>
+  <div ui-view></div>
 
 </body>
 </html>
