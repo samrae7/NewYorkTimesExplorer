@@ -20,7 +20,7 @@
 
      <form>
         <label for="searchBox" class="active">Search: </label>
-        <input type="text" id='searchBox' ng-model="vm.searchText" placeholder="e.g. presidential election">
+        <input type="text" id='searchBox' ng-model="vm.searchText" placeholder="e.g. presidential election" ng-change="vm.getArticles()">
       </form>
 
     <div>

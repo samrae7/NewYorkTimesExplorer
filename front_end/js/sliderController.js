@@ -5,7 +5,7 @@ var nytApp = angular.module('nytApp', ['rzModule'])
 
     //self.article = {}
 
-    self.searchText = "presidential election"
+    self.searchText = self.searchText || "presidential election"
 
     self.nytSlider = {
         floor: 1,
@@ -44,7 +44,7 @@ var nytApp = angular.module('nytApp', ['rzModule'])
 
       date = self.workOutDate()
 
-       SliderFactory.getArticles(date, self.searchText)
+      SliderFactory.getArticles(date, self.searchText)
         .then(function(response) {
         self.articles = response.nyt.response.docs
         console.log(self.articles)
