@@ -21,6 +21,10 @@ var nytApp = angular.module('nytApp', ['rzModule'])
 
     self.dateInWords = self.nytSlider.value + ' Sep'
 
+    self.hideArticles = function() {
+      console.log('articles removed and invisible. waiting for new articles to load')
+    }
+
     self.callDate = function() {
       //if value is less than ten add a zero before
 

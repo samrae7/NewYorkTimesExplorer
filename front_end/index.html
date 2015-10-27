@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="./node_modules/angularjs-slider/dist/rzslider.css">
   <script type="text/javascript" src="js/sliderFactory.js"></script>
   <link rel="stylesheet" href="css/styles.css">
+  <link href='https://fonts.googleapis.com/css?family=Julius+Sans+One' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Crimson+Text' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
@@ -18,7 +20,7 @@
 
     <div>
         <p>Date: {{vm.dateInWords}}</p>
-        <rzslider rz-slider-model="vm.nytSlider.value" rz-slider-floor="vm.nytSlider.floor" rz-slider-ceil="vm.nytSlider.ceil" rz-slider-on-end="vm.callDate()" rz-slider-translate="vm.translate"></rzslider>
+        <rzslider rz-slider-model="vm.nytSlider.value" rz-slider-floor="vm.nytSlider.floor" rz-slider-ceil="vm.nytSlider.ceil" rz-slider-on-end="vm.callDate()" rz-slider-on-start="vm.hideArticles()" rz-slider-translate="vm.translate"></rzslider>
     </div>
 
     <div class="articles-container">

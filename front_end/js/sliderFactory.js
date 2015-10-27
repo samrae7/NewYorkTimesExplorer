@@ -37,7 +37,8 @@ angular.module('nytApp')
           })
 
           return deferred.promise;
-      },
+      }
+
 
 
     }
