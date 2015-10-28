@@ -1,5 +1,5 @@
 angular.module('nytApp')
-  .controller("SliderController", function(SliderFactory) {
+  .controller("SliderController", ['$rootScope','SliderFactory', function($rootScope, SliderFactory) {
 
     var self = this;
 
@@ -44,8 +44,8 @@ angular.module('nytApp')
 
       SliderFactory.getArticles(date, self.searchText)
         .then(function(response) {
-        self.articles = response.nyt.response.docs
-        console.log(self.articles)
+        $rootScope.articles = response.nyt.response.docs
+        console.log($rootScope.articles)
       });
 
     }
@@ -56,7 +56,7 @@ angular.module('nytApp')
       return value + ' Sep'
     }
 
-  })
+  }]);
 
 
     

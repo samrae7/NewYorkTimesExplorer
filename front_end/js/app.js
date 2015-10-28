@@ -1,10 +1,11 @@
 angular
   .module('nytApp', ['ui.router', 'rzModule','uiGmapgoogle-maps'])
-  .config(MainRouter)
-  .controller('MyController', ['$scope','SliderFactory', function($scope, SliderFactory) {
+  .config(MainRouter)//could use ng-annotate here
+  .controller('MyController', ['$rootScope','$scope','SliderFactory', function($rootScope, $scope, SliderFactory) {
 
+      var self = this
 
-
+      console.log($rootScope.articles)
 
       $scope.map = {
         center: {
@@ -54,12 +55,26 @@ angular
       }
     }, true);
 
-    
-      SliderFactory.getArticles('20150101', 'obama')
+
+     SliderFactory.getArticles('20150101', 'obama')
       .then(function(response) {
       $scope.articles = response.nyt.response.docs
       console.log($scope.articles)
+      //$scope.articles is not availble outside of this function because of asynch
+      _($scope.articles).forEach(function(article) {
+          _(article.keywords).forEach(function(keyword){
+              if(keyword.name==='glocations') {
+                console.log(keyword.value)
+              }
+            }).value();
+        }).value();
       });
+
+      _([1, 2]).forEach(function(n) {
+      console.log(n);
+      }).value();
+
+      
 
 
     }]);
