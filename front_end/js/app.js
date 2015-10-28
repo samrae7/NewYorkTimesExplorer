@@ -1,7 +1,11 @@
 angular
   .module('nytApp', ['ui.router', 'rzModule','uiGmapgoogle-maps'])
   .config(MainRouter)
-  .controller('MyController', ['$scope', function($scope) {
+  .controller('MyController', ['$scope','SliderFactory', function($scope, SliderFactory) {
+
+
+
+
       $scope.map = {
         center: {
           latitude: 40.1451,
@@ -22,6 +26,7 @@ angular
       if (idKey == null) {
         idKey = "id";
       }
+      // console.log(SliderController.articles)
 
       var latitude = lat_min + (Math.random() * lat_range);
       var longitude = lng_min + (Math.random() * lng_range);
@@ -48,6 +53,13 @@ angular
         $scope.randomMarkers = markers;
       }
     }, true);
+
+    
+      SliderFactory.getArticles('20150101', 'obama')
+      .then(function(response) {
+      $scope.articles = response.nyt.response.docs
+      console.log($scope.articles)
+      });
 
 
     }]);

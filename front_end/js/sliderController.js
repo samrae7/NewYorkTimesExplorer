@@ -3,7 +3,6 @@ angular.module('nytApp')
 
     var self = this;
 
-    //self.article = {}
 
     self.searchText = self.searchText || "presidential election"
 
@@ -13,7 +12,6 @@ angular.module('nytApp')
         value: 15
     }
 
-    //self.articles = []
 
     self.dateInWords = self.nytSlider.value + ' Sep'
 
