@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular-google-maps": "^2.2.1",
     "angular-ui-router": "^0.2.15",
     "angularjs-slider": "^1.0.0"
   }
