@@ -24,6 +24,8 @@ angular
     // The "then" callback function provides the google.maps object.
     uiGmapGoogleMapApi.then(function(maps) {
 
+      console.log(maps)
+
       _($rootScope.articles).forEach(function(article) {
         _(article.keywords).forEach(function(keyword) {
           if(keyword.name==='glocations') {
