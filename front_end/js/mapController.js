@@ -1,6 +1,58 @@
 angular
   .module('nytApp')
-  .controller('MapController', ['$rootScope','$scope','SliderFactory', function($rootScope, $scope, SliderFactory) {
+  .controller('MapController', ['$rootScope','$scope','SliderFactory', '$log', '$timeout', function($rootScope, $scope, SliderFactory,$log, $timeout) {
+
+    $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 4 };
+    $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 4 };
+    $scope.options = {scrollwheel: false};
+    $scope.coordsUpdates = 0;
+    $scope.dynamicMoveCtr = 0;
+    $scope.marker = {
+      id: 0,
+      coords: {
+        latitude: 37.7833,
+        longitude: -122.4167
+      },
+      options: { draggable: true },
+      events: {
+        dragend: function (marker, eventName, args) {
+          $log.log('marker dragend');
+          var lat = marker.getPosition().lat();
+          var lon = marker.getPosition().lng();
+          $log.log(lat);
+          $log.log(lon);
+
+          $scope.marker.options = {
+            draggable: true,
+            labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
+            labelAnchor: "100 0",
+            labelClass: "marker-labels"
+          };
+        }
+      }
+    };
+    // $scope.$watchCollection("marker.coords", function (newVal, oldVal) {
+    //   if (_.isEqual(newVal, oldVal))
+    //     return;
+    //   $scope.coordsUpdates++;
+    // });
+    // $timeout(function () {
+    //   $scope.marker.coords = {
+    //     latitude: 42.1451,
+    //     longitude: -100.6680
+    //   };
+    //   $scope.dynamicMoveCtr++;
+    //   $timeout(function () {
+    //     $scope.marker.coords = {
+    //       latitude: 43.1451,
+    //       longitude: -102.6680
+    //     };
+    //     $scope.dynamicMoveCtr++;
+    //   }, 2000);
+    // }, 1000);
+
+
+///////
 
       var self = this
 
@@ -14,57 +66,6 @@ angular
 
       } else console.log($rootScope.articles)
 
-      $scope.map = {
-        center: {
-          latitude: 40.1451,
-          longitude: -99.6680
-        },
-        zoom: 4,
-        bounds: {}
-      };
-
-      $scope.options = {
-      scrollwheel: false
-      };
-
-    //   var createRandomMarker = function(i, bounds, idKey) {
-    //   var lat_min = bounds.southwest.latitude,
-    //     lat_range = bounds.northeast.latitude - lat_min,
-    //     lng_min = bounds.southwest.longitude,
-    //     lng_range = bounds.northeast.longitude - lng_min;
-
-    //   if (idKey == null) {
-    //     idKey = "id";
-    //   }
-
-    //   var latitude = lat_min + (Math.random() * lat_range);
-    //   var longitude = lng_min + (Math.random() * lng_range);
-    //   var ret = {
-    //     latitude: latitude,
-    //     longitude: longitude,
-    //     title: 'm' + i
-    //   };
-    //   ret[idKey] = i;
-    //   return ret;
-    // };
-
-
-    $scope.Markers = [];
-
-    //Get the bounds from the map once it's loaded
-    // $scope.$watch(function() {
-    //   return $scope.map.bounds;
-    // }, function(nv, ov) {
-    //   // Only need to regenerate once
-    //   if (!ov.southwest && nv.southwest) {
-    //     var markers = [];
-    //     for (var i = 0; i < 50; i++) {
-    //       markers.push(createRandomMarker(i, $scope.map.bounds))
-    //     }
-    //     $scope.randomMarkers = markers;
-    //   }
-    // }, true);
-
       _($rootScope.articles).forEach(function(article) {
           _(article.keywords).forEach(function(keyword){
               if(keyword.name==='glocations') {
@@ -73,26 +74,33 @@ angular
             }).value();
         }).value();
 
-     var geocoder = new google.maps.Geocoder();
-      geocoder.geocode( { "address": 'New York' }, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
-        console.log('ok')
-        var location = results[0].geometry.location;
-        var markers = []
-        var testMarker = {
-          id: 101,
-          coords: {
-            latitude: 37.7833,
-            longitude: -122.4167
-          }
-        }
-       markers.push(testMarker)
-       $scope.Markers = markers
-      //$scope.map.panTo(location);
-       }
-      });
 
-    }]);
 
+  }]);
+
+
+
+
+
+
+
+     // var geocoder = new google.maps.Geocoder();
+     //  geocoder.geocode( { "address": 'New York' }, function(results, status) {
+     //  if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
+     //    console.log('ok')
+     //    var location = results[0].geometry.location;
+     //    var markers = []
+     //    var testMarker = {
+     //      id: 101,
+     //      coords: {
+     //        latitude: 37.7833,
+     //        longitude: -122.4167
+     //      }
+     //    }
+     //   markers.push(testMarker)
+     //   $scope.Markers = markers
+     //  //$scope.map.panTo(location);
+     //   }
+     //  });
 
 
