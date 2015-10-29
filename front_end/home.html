@@ -1,6 +1,6 @@
 
   <div ng-controller="SliderController as vm">
-   <div class="controls-container">
+   <div class="controls-container cf">
     <div class='form-box'>
       <form class='searchForm'>
         <label for="searchBox" class="active">Search: </label>
@@ -20,12 +20,12 @@
     <div class="articles-container cf">
       <article class="article-holder" ng-repeat="article in articles">
 
+       <img ng-src="http://www.nytimes.com/{{article.multimedia[0].url}}" alt="Description" src="http://www.goseekadventures.com/wp-content/uploads/2014/06/New-York-Times-Social-Logo.jpg">
         <h3>
           <a ng-href="{{article.web_url}}">{{article.headline.main}}</a>
         </h3>
 
        <!--  <p class="date">Date: {{article.pub_date | date:'d MMM'}}</p> -->
-       <img ng-src="http://www.nytimes.com/{{article.multimedia[0].url}}" alt="Description" src="http://www.goseekadventures.com/wp-content/uploads/2014/06/New-York-Times-Social-Logo.jpg">
         <p class="snippet">{{article.snippet}}</p>
       </article>
     </div>

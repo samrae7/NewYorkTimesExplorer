@@ -25,23 +25,32 @@
     *zoom: 1;
 }
 
-
 body {
   font-family: 'Crimson Text', serif;
   font-size: 18px;
 }
 
 .map-container {
-  width:1100px;
+  width:1156px;
+  margin: 0 50px;
 }
 
+.angular-google-map-container {
+  height: 538px;
+}
 .searchForm {
   font-size: 1.5em;
 }
 
 .slider-container {
-  float:left;
-  width:49%;
+  float: left;
+  width: 49%;
+  margin-top: -2px;
+  margin-right: 10px;
+  /* background-color: #f2f2f2; */
+  height: 56px;
+  padding: 20px;
+  border: 1px #ccc solid ;
 }
 
 .state-descriptor p{
@@ -51,11 +60,11 @@ body {
 
 .form-box {
   float:left;
-  width:49%;
+  width:46%;
 }
 
 .controls-container {
-  margin: 0 50px;
+  margin: 0 49px;
 }
 
 .articles-container {
@@ -108,26 +117,30 @@ nav li a {
     margin-bottom: 11px;
   }
 
-.angular-google-map-container {
-  height: 400px;
-}
-
 .article-holder img {
-  width: 190px;
-  height: 126px;
+  width: 241px;
+  height: 154px;
   border: dotted gray 1px;
+  margin-bottom: 4px;
 }
 
 article.article-holder{
-  width: 210px;
-  height:370px;
+  width: 243px;
+  height: 370px;
   border: dotted gray 1px;
-  float:left;
-  overflow:hidden;
+  float: left;
+  overflow: hidden;
+  padding: 15px;
+  margin: 7px;
 }
 
 h1, h3 {
   font-family: 'Julius Sans One', sans-serif;
+}
+
+.article-holder h3,
+p.snippet {
+  margin: 0 auto;
 }
 
 a {
