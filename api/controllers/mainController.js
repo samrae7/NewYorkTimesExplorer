@@ -22,6 +22,19 @@ function getArticles(req,res){
   })
 }
 
+function getArticlesDateRange(req,res){
+  console.log('start', req.params.startDate)
+  console.log('end', req.params.endDate)
+  console.log('keyword', req.params.keyword)
+    request('http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + req.params.keyword + '&begin_date='+ req.params.startDate + '&end_date=' + req.params.endDate + '&api-key=' + process.env.NYT_API_KEY, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log(JSON.parse(body))
+        var data = JSON.parse(body)
+         res.json({ nyt: data})
+      }
+  })
+}
+
 //PUT API KEY IN A CONFIG FILE TO MAKE THINGS NEATER
 
 function sayHi(req, res) {
@@ -30,6 +43,7 @@ function sayHi(req, res) {
 
 module.exports = {
   getArticles: getArticles,
+  getArticlesDateRange: getArticlesDateRange,
   getArticlesWithoutKeyword: getArticlesWithoutKeyword,
   sayHi: sayHi
 }

@@ -3,46 +3,42 @@ angular.module('nytApp')
 
     var self = this;
 
-
     self.searchText = self.searchText || "presidential election"
 
     self.nytSlider = {
         floor: 1,
-        ceil: 31,
-        value: 15
+        ceil: 12,
+        value: 6
     }
 
-
-    self.dateInWords = self.nytSlider.value + ' Sep'
+    self.dateInWords = self.nytSlider.value + ' 2015'
 
     self.hideArticles = function() {
       console.log('articles removed and invisible. waiting for new articles to load')
     }
 
-    self.workOutDate = function() {
+    self.workOutDates = function() {
       //if value is less than ten add a zero before
 
-      var day = self.nytSlider.value
+      var month = self.nytSlider.value
 
-      if (day < 10) {
-        day = '0' + day
+      if (month < 10) {
+        month = '0' + month
       }
 
-      var date = '201509' + day
-      
+      self.date1 = '2015' + month + '01'
+      self.date2 = '2015' + month + '28'
 
-      //refactor this
-      self.dateInWords = self.nytSlider.value + ' Sep'
-
-      return date
+      //reminder - refactor this
+      self.dateInWords = self.nytSlider.value + ' 2015'
     }
 
      
-    self.getArticles = function() {
+    self.getArticlesDateRange = function() {
 
-      date = self.workOutDate()
+      self.workOutDates()
 
-      SliderFactory.getArticles(date, self.searchText)
+      SliderFactory.getArticlesDateRange(self.date1, self.date2, self.searchText)
         .then(function(response) {
         $rootScope.articles = response.nyt.response.docs
         console.log($rootScope.articles)
@@ -50,10 +46,11 @@ angular.module('nytApp')
 
     }
 
-    self.getArticles()
+    self.getArticlesDateRange()
 
     self.translate = function(value) {
-      return value + ' Sep'
+      var months = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      return months[value-1]
     }
 
   }]);

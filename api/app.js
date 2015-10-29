@@ -43,7 +43,7 @@ router.get('/:date', mainController.getArticlesWithoutKeyword);
 
 router.get('/:date/:keyword', mainController.getArticles);
 
-
+router.get('/:startDate/:endDate/:keyword', mainController.getArticlesDateRange)
 
 // listen on port 3000
 app.listen(3000, function (){

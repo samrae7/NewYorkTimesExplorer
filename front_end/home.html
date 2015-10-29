@@ -4,7 +4,7 @@
     <div class='form-box'>
       <form class='searchForm'>
         <label for="searchBox" class="active">Search: </label>
-        <input type="text" id='searchBox' ng-model="vm.searchText" placeholder="e.g. presidential election" ng-change="vm.getArticles()">
+        <input type="text" id='searchBox' ng-model="vm.searchText" placeholder="e.g. presidential election" ng-change="vm.getArticlesDateRange()">
       </form>
 
       <div class="state-descriptor">
@@ -13,7 +13,7 @@
     </div>
 
     <div class='slider-container'>
-      <rzslider rz-slider-model="vm.nytSlider.value" rz-slider-floor="vm.nytSlider.floor" rz-slider-ceil="vm.nytSlider.ceil" rz-slider-on-end="vm.getArticles()" rz-slider-on-start="vm.hideArticles()" rz-slider-translate="vm.translate"></rzslider>
+      <rzslider rz-slider-model="vm.nytSlider.value" rz-slider-floor="vm.nytSlider.floor" rz-slider-ceil="vm.nytSlider.ceil" rz-slider-on-end="vm.getArticlesDateRange()" rz-slider-on-start="vm.hideArticles()" rz-slider-translate="vm.translate"></rzslider>
     </div>
   </div> 
 

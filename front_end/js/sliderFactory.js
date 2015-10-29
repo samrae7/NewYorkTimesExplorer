@@ -37,11 +37,46 @@ angular.module('nytApp')
 
             return deferred.promise;
         }
+      },
+
+      getArticlesDateRange: function(startDate,endDate, keyword) {
+
+        var deferred = $q.defer();
+        //$http returns promises by default so don't need to set up a deferred object
+        //can just have 
+        //return $http.get('http://jsonplaceholder.typicode.com/photos')
+
+        if (keyword==='') {
+
+          $http
+            .get('http://localhost:3000/' + startDate + '/' + endDate )
+            .success(function(response) {
+              deferred.resolve(response);
+            })
+            .error(function(error) {
+              deferred.reject(error);
+            })
+
+            return deferred.promise;
+
+        }
+
+        else {
+          console.log('STARTDATE', startDate)
+          console.log('ENDDATE', endDate)
+          $http
+            .get('http://localhost:3000/' + startDate + '/' + endDate + '/' + keyword)
+            .success(function(response) {
+              deferred.resolve(response);
+            })
+            .error(function(error) {
+              deferred.reject(error);
+            })
+
+            return deferred.promise;
+        }
       }
-
-
-
     }
 
-    return SliderFactory
+  return SliderFactory
 })
