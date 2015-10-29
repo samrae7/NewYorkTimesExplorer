@@ -29,7 +29,15 @@ angular
                 {
                   id: index,
                   latitude: article.locations[0].latitude,
-                  longitude: article.locations[0].longitude
+                  longitude: article.locations[0].longitude,
+                  title: '<h3><a href='+ article.web_url + '>' + article.headline.main + '</a></h3>',
+                  options: {
+                    draggable: true,
+                    labelContent: 'HELLO!',
+                    //labelAnchor: "100 0",
+                    labelClass: "marker-labels"
+                  },
+                  //label:'HELLO THERE'
                 }
               )
             }
@@ -45,6 +53,12 @@ angular
       $scope.options = {scrollwheel: false};
       $scope.coordsUpdates = 0;
       $scope.dynamicMoveCtr = 0;
+      // self.Markers.options = {
+      //   draggable: true,
+      //   labelContent: 'HELLO!',
+      //   labelAnchor: "100 0",
+      //   labelClass: "marker-labels"
+      // };
 
       // console.log($rootScope.la)
 
