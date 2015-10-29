@@ -5,19 +5,25 @@ angular
     // Do stuff with your $scope.
 
     var self = this
-    self.locations = []
-    _($rootScope.articles).forEach(function(article) {
-      _(article.keywords).forEach(function(keyword) {
-        if(keyword.name==='glocations') {
-          console.log(keyword.value)
-          self.locations.push(keyword.value)
-          } else {
-            console.log('no location!')
-          }
-        }).value();
-      }).value();
 
-      console.log('locations',self.locations)
+    self.locations = []
+
+    _($rootScope.articles).forEach(function(article) {
+      article.locations = []
+      _(article.keywords).forEach(function(keyword) {
+
+          if(keyword.name==='glocations') {
+            
+            article.locations.push(keyword.value)
+            console.log('added'+ keyword.value + 'to', article.headline.main)
+            } else {
+              console.log('no location added!')
+            }
+        }).value();
+      console.log('article.locations', article.locations)
+    }).value();
+
+   
 
       var geocoder = new google.maps.Geocoder();
       geocoder.geocode( { "address": self.locations[0] }, function(results, status) {
