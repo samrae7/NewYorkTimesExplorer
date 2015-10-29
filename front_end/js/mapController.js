@@ -36,8 +36,7 @@ angular
                     labelContent: 'HELLO!',
                     //labelAnchor: "100 0",
                     labelClass: "marker-labels"
-                  },
-                  //label:'HELLO THERE'
+                  }
                 }
               )
             }
