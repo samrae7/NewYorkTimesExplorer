@@ -1,21 +1,46 @@
 body {
   font-family: 'Crimson Text', serif;
+  font-size: 18px;
 }
 
 .map-container {
   width:1100px;
 }
 
+.searchForm {
+  margin-left:13px; 
+  font-size: 1.5em;
+  margin-left: 0.5em;
+}
 
+.state-descriptor p{
+  margin: 5px 0 0 13px;
+  font-size: 1.5em;
+}
+
+.searchForm input {
+  font-size: 0.7em;
+  font-family: serif;
+}
+
+nav h1 {
+    float: left;
+    margin-right: 10px;
+    font-size: 2.5em;
+    margin: 0.3em;
+    margin-top: 0.3em;
+}
 
 nav li {
   float: left;
+  list-style: none;
+
 }
 
 nav {
   width: 100%;
   float: left;
-  margin: 0 0 3em 0;
+  margin: 0 0 1em 0;
   padding: 0;
   list-style: none;
   background-color: #f2f2f2;
@@ -24,12 +49,16 @@ nav {
 }
 
 nav li a {
+    font-size: 1.5em;
     display: block;
     padding: 8px 15px;
     text-decoration: none;
     font-weight: bold;
     color: #069;
     border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    margin-top: 0;
+    margin-bottom: 11px;
   }
 
 .angular-google-map-container {
