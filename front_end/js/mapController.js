@@ -48,7 +48,7 @@ angular
     // The "then" callback function provides the google.maps object.
     uiGmapGoogleMapApi.then(function(maps) {
 
-      $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 4 };
+      $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 2 };
       $scope.options = {scrollwheel: false};
       $scope.coordsUpdates = 0;
       $scope.dynamicMoveCtr = 0;

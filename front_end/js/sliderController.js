@@ -3,7 +3,7 @@ angular.module('nytApp')
 
     var self = this;
 
-    self.searchText = self.searchText
+    self.searchText = self.searchText || "politics"
     self.year = self.year || "2015"
     
     self.nytSlider = {
