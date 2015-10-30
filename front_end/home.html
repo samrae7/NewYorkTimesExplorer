@@ -8,27 +8,17 @@
         <input type="text" id='searchBox' ng-model="vm.searchText" placeholder="e.g. presidential election" ng-change="vm.getArticlesDateRange()">
       </form>
 
-<!--  <form class='searchForm'>
-        <select ng-model="vm.year" ng-change="vm.getArticlesDateRange()">
-          <option value="2010">2010</option>
-          <option value="2011">2011</option>
-          <option value="2012">2012</option>
-          <option value="2013">2013</option>
-        </select>
-      </form> -->
-
       <div class="state-descriptor">
           <p>Date: {{vm.dateInWords}}</p>
       </div>
     </div>
-
+  
     <div class='slider-container'>
+      <rzslider rz-slider-model="vm.year" rz-slider-floor="1852" rz-slider-ceil="2015" rz-slider-on-end="vm.getArticlesDateRange()" rz-slider-on-start="vm.hideArticles()"></rzslider>
+    
       <rzslider rz-slider-model="vm.nytSlider.value" rz-slider-floor="vm.nytSlider.floor" rz-slider-ceil="vm.nytSlider.ceil" rz-slider-on-end="vm.getArticlesDateRange()" rz-slider-on-start="vm.hideArticles()" rz-slider-translate="vm.translate" rz-slider-show-ticks="true"></rzslider>
     </div>
 
-    <div class='slider-container'>
-      <rzslider rz-slider-model="vm.year" rz-slider-floor="1851" rz-slider-ceil="2015" rz-slider-on-end="vm.getArticlesDateRange()" rz-slider-on-start="vm.hideArticles()"></rzslider>
-    </div>
   </div> 
 
     <div class="articles-container cf">

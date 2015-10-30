@@ -39,11 +39,13 @@ router.use(function(req, res, next) {
 
 router.get('/', mainController.sayHi);
 
-router.get('/:date', mainController.getArticlesWithoutKeyword);
+//router.get('/:date', mainController.getArticlesWithoutKeyword);
 
 router.get('/:date/:keyword', mainController.getArticles);
 
 router.get('/:startDate/:endDate/:keyword', mainController.getArticlesDateRange)
+
+router.get('/:startDate/:endDate', mainController.getArticlesWithoutKeyword)
 
 // listen on port 3000
 app.listen(3000, function (){

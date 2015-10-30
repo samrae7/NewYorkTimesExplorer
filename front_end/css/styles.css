@@ -40,17 +40,19 @@ body {
 }
 .searchForm {
   font-size: 1.5em;
+  margin-bottom: 18px;
+  margin-top: 11px;
 }
 
 .slider-container {
-  float: left;
-  width: 49%;
+  float: right;
+  width: 57%;
   margin-top: -2px;
   margin-right: 10px;
   /* background-color: #f2f2f2; */
-  height: 56px;
-  padding: 20px;
-  border: 1px #ccc solid ;
+  height: 138px;
+  padding: 0 20px;
+  border: 1px #ccc solid;
 }
 
 .state-descriptor p{
@@ -60,13 +62,13 @@ body {
 
 .form-box {
   float: left;
-  width: 483px;
-  height: 76px;
+  width: 390px;
+  height: 117px;
   margin-left: 8px;
   margin-top: -2px;
   margin-right: 13px;
   border: 1px #ccc solid;
-  padding: 10px 15px;
+  padding: 10px 17px;
 }
 
 .controls-container {
@@ -80,7 +82,7 @@ body {
 }
 
 .searchForm input {
-  font-size: 0.7em;
+  font-size: 1em;
   font-family: serif;
 }
 
@@ -151,4 +153,8 @@ p.snippet {
 
 a {
   text-decoration: none;
+}
+
+rzslider {
+  margin: 50px 0 9px 0;
 }

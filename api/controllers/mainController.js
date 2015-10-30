@@ -1,7 +1,7 @@
 var request = require('request')
 
 function getArticlesWithoutKeyword(req,res){
-  request('http://api.nytimes.com/svc/search/v2/articlesearch.json?begin_date='+ req.params.date + '&end_date=' + req.params.date + '&api-key=' + process.env.NYT_API_KEY, function (error, response, body) {
+  request('http://api.nytimes.com/svc/search/v2/articlesearch.json?begin_date='+ req.params.startDate + '&end_date=' + req.params.endDate + '&api-key=' + process.env.NYT_API_KEY, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         console.log(JSON.parse(body))
         var data = JSON.parse(body)
@@ -23,9 +23,9 @@ function getArticles(req,res){
 }
 
 function getArticlesDateRange(req,res){
-  console.log('start', req.params.startDate)
-  console.log('end', req.params.endDate)
-  console.log('keyword', req.params.keyword)
+  // console.log('start', req.params.startDate)
+  // console.log('end', req.params.endDate)
+  // console.log('keyword', req.params.keyword)
     request('http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + req.params.keyword + '&begin_date='+ req.params.startDate + '&end_date=' + req.params.endDate + '&api-key=' + process.env.NYT_API_KEY, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         console.log(JSON.parse(body))

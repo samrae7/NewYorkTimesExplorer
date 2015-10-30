@@ -3,15 +3,13 @@ angular.module('nytApp')
 
     var self = this;
 
-    self.searchText = self.searchText || "presidential election"
-    self.year = self.year || "1967"
+    self.searchText = self.searchText
+    self.year = self.year || "2015"
     
-
-
     self.nytSlider = {
         floor: 1,
         ceil: 12,
-        value: 6
+        value: 9
     }
 
     self.dateInWords = self.nytSlider.value + ' ' + self.year
@@ -20,10 +18,17 @@ angular.module('nytApp')
       console.log('articles removed and invisible. waiting for new articles to load')
     }
 
+    self.translate = function(value) {
+      var months = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      return months[value-1]
+    }
+
     self.workOutDates = function() {
       //if value is less than ten add a zero before
 
       self.month = self.nytSlider.value
+
+      self.dateInWords = self.translate(self.month) + ' ' + self.year
 
       if (self.month < 10) {
         self.month = '0' + self.month
@@ -33,7 +38,8 @@ angular.module('nytApp')
       self.date2 = self.year + self.month + '28'
 
       //reminder - refactor this
-      self.dateInWords = self.nytSlider.value + ' ' + self.year
+
+      
     }
 
      
@@ -50,11 +56,6 @@ angular.module('nytApp')
     }
 
     self.getArticlesDateRange()
-
-    self.translate = function(value) {
-      var months = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-      return months[value-1]
-    }
 
   }]);
 

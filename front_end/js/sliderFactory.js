@@ -62,8 +62,6 @@ angular.module('nytApp')
         }
 
         else {
-          console.log('STARTDATE', startDate)
-          console.log('ENDDATE', endDate)
           $http
             .get('http://localhost:3000/' + startDate + '/' + endDate + '/' + keyword)
             .success(function(response) {
