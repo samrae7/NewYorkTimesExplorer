@@ -4,6 +4,9 @@ angular.module('nytApp')
     var self = this;
 
     self.searchText = self.searchText || "presidential election"
+    self.year = self.year || "1967"
+    
+
 
     self.nytSlider = {
         floor: 1,
@@ -11,7 +14,7 @@ angular.module('nytApp')
         value: 6
     }
 
-    self.dateInWords = self.nytSlider.value + ' 2015'
+    self.dateInWords = self.nytSlider.value + ' ' + self.year
 
     self.hideArticles = function() {
       console.log('articles removed and invisible. waiting for new articles to load')
@@ -20,17 +23,17 @@ angular.module('nytApp')
     self.workOutDates = function() {
       //if value is less than ten add a zero before
 
-      var month = self.nytSlider.value
+      self.month = self.nytSlider.value
 
-      if (month < 10) {
-        month = '0' + month
+      if (self.month < 10) {
+        self.month = '0' + self.month
       }
 
-      self.date1 = '2015' + month + '01'
-      self.date2 = '2015' + month + '28'
+      self.date1 = self.year + self.month + '01'
+      self.date2 = self.year + self.month + '28'
 
       //reminder - refactor this
-      self.dateInWords = self.nytSlider.value + ' 2015'
+      self.dateInWords = self.nytSlider.value + ' ' + self.year
     }
 
      
